@@ -1,0 +1,241 @@
+<?xml version="1.0"?>
+<interface>
+  <requires lib="gtk+" version="2.16"/>
+  <!-- interface-naming-policy project-wide -->
+  <object class="GtkWindow" id="window1">
+    <child>
+      <object class="GtkFixed" id="fixed1">
+        <property name="visible">True</property>
+        <child>
+          <object class="GtkLinkButton" id="linkbutton1">
+            <property name="label" translatable="yes">Bienvenure </property>
+            <property name="width_request">228</property>
+            <property name="height_request">126</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="has_tooltip">True</property>
+            <property name="relief">none</property>
+            <property name="uri">http://glade.gnome.org</property>
+          </object>
+          <packing>
+            <property name="x">117</property>
+            <property name="y">72</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label1">
+            <property name="width_request">100</property>
+            <property name="height_request">80</property>
+            <property name="visible">True</property>
+            <property name="yalign">0.47999998927116394</property>
+            <property name="label" translatable="yes">Nom d'utilisateur</property>
+          </object>
+          <packing>
+            <property name="x">301</property>
+            <property name="y">93</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label2">
+            <property name="width_request">164</property>
+            <property name="height_request">59</property>
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">Choisir la destination</property>
+          </object>
+          <packing>
+            <property name="x">92</property>
+            <property name="y">213</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkComboBox" id="combobox1">
+            <property name="width_request">115</property>
+            <property name="height_request">24</property>
+            <property name="visible">True</property>
+          </object>
+          <packing>
+            <property name="x">289</property>
+            <property name="y">234</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label3">
+            <property name="width_request">106</property>
+            <property name="height_request">40</property>
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">Choisir l'hotel </property>
+          </object>
+          <packing>
+            <property name="x">114</property>
+            <property name="y">289</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkComboBox" id="combobox2">
+            <property name="width_request">107</property>
+            <property name="height_request">29</property>
+            <property name="visible">True</property>
+          </object>
+          <packing>
+            <property name="x">295</property>
+            <property name="y">292</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label4">
+            <property name="width_request">104</property>
+            <property name="height_request">35</property>
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">Choisir la date</property>
+          </object>
+          <packing>
+            <property name="x">120</property>
+            <property name="y">467</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkCalendar" id="calendar1">
+            <property name="width_request">181</property>
+            <property name="height_request">157</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="year">2019</property>
+            <property name="month">10</property>
+            <property name="day">5</property>
+          </object>
+          <packing>
+            <property name="x">281</property>
+            <property name="y">442</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkCalendar" id="calendar2">
+            <property name="width_request">186</property>
+            <property name="height_request">152</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="year">2019</property>
+            <property name="month">10</property>
+            <property name="day">5</property>
+          </object>
+          <packing>
+            <property name="x">594</property>
+            <property name="y">444</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label5">
+            <property name="width_request">100</property>
+            <property name="height_request">80</property>
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">Choisir la categorie</property>
+          </object>
+          <packing>
+            <property name="x">120</property>
+            <property name="y">337</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label6">
+            <property name="width_request">100</property>
+            <property name="height_request">80</property>
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">Du </property>
+          </object>
+          <packing>
+            <property name="x">213</property>
+            <property name="y">444</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label7">
+            <property name="width_request">100</property>
+            <property name="height_request">80</property>
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">Jusqu'au</property>
+          </object>
+          <packing>
+            <property name="x">482</property>
+            <property name="y">440</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkComboBox" id="combobox3">
+            <property name="width_request">121</property>
+            <property name="height_request">33</property>
+            <property name="visible">True</property>
+          </object>
+          <packing>
+            <property name="x">291</property>
+            <property name="y">359</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label8">
+            <property name="width_request">103</property>
+            <property name="height_request">42</property>
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">Nombre de nuit </property>
+          </object>
+          <packing>
+            <property name="x">545</property>
+            <property name="y">231</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="entry1">
+            <property name="width_request">64</property>
+            <property name="height_request">36</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="invisible_char">&#x25CF;</property>
+          </object>
+          <packing>
+            <property name="x">670</property>
+            <property name="y">234</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label9">
+            <property name="width_request">100</property>
+            <property name="height_request">80</property>
+            <property name="visible">True</property>
+            <property name="label" translatable="yes">Type de logement </property>
+          </object>
+          <packing>
+            <property name="x">545</property>
+            <property name="y">341</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkComboBox" id="combobox4">
+            <property name="width_request">65</property>
+            <property name="height_request">36</property>
+            <property name="visible">True</property>
+          </object>
+          <packing>
+            <property name="x">680</property>
+            <property name="y">363</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="button1">
+            <property name="label" translatable="yes">Continuer</property>
+            <property name="width_request">210</property>
+            <property name="height_request">64</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+          </object>
+          <packing>
+            <property name="x">355</property>
+            <property name="y">631</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkTextTagTable" id="texttagtable1"/>
+  <object class="GtkTextTagTable" id="texttagtable2"/>
+</interface>
