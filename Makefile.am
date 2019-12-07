@@ -5,14 +5,14 @@ INCLUDES = \
 	-DPACKAGE_LOCALE_DIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \
 	@PACKAGE_CFLAGS@
 
-bin_PROGRAMS = vol
+bin_PROGRAMS = gestion-agent
 
-vol_SOURCES = \
+gestion_agent_SOURCES = \
 	main.c \
 	support.c support.h \
 	interface.c interface.h \
 	callbacks.c callbacks.h \
-        vol.c vol.h
+        agent.c agent.h
 
-vol_LDADD = @PACKAGE_LIBS@ $(INTLLIBS)
+gestion_agent_LDADD = @PACKAGE_LIBS@ $(INTLLIBS)
 
