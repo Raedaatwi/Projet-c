@@ -1,104 +1,187 @@
 #ifdef HAVE_CONFIG_H
 #  include <config.h>
 #endif
-
+#include <glib/gprintf.h>
 #include <gtk/gtk.h>
 
 #include "callbacks.h"
 #include "interface.h"
 #include "support.h"
-#include "agent.h"
+#include "voiture.h"
 
-agent x;
+#include "string.h"
+ajout z;
 void
-on_ajouter_clicked                     (GtkButton       *button,
-                                        gpointer         user_data)
+on_ok_clicked (GtkButton *button,gpointer  user_data)
 {
-agent x;
-GtkWidget *nom=lookup_widget(GTK_WIDGET(button),"nom");
-GtkWidget *prenom=lookup_widget(GTK_WIDGET(button),"prenom");
-GtkWidget *cin=lookup_widget(GTK_WIDGET(button),"cin");
-GtkWidget *mail=lookup_widget(GTK_WIDGET(button),"mail");
-GtkWidget *tel=lookup_widget(GTK_WIDGET(button),"tel");
-GtkWidget *jrn=lookup_widget(GTK_WIDGET(button),"jrn");
-GtkWidget *msn=lookup_widget(GTK_WIDGET(button),"msn");
-GtkWidget *ann=lookup_widget(GTK_WIDGET(button),"ann");
-GtkWidget *jrr=lookup_widget(GTK_WIDGET(button),"jrr");
-GtkWidget *msr=lookup_widget(GTK_WIDGET(button),"msr");
-GtkWidget *anr=lookup_widget(GTK_WIDGET(button),"anr");
-GtkWidget *mdp=lookup_widget(GTK_WIDGET(button),"mdp");
-GtkWidget *mdp2=lookup_widget(GTK_WIDGET(button),"mdp2");
-GtkWidget *tache=lookup_widget(GTK_WIDGET(button),"tache");
-GtkWidget *sexe=lookup_widget(GTK_WIDGET(button),"sexe");
+reserve r;
+GtkWidget *input1;
+GtkWidget *jr=lookup_widget(GTK_WIDGET(button),"jr");
+GtkWidget *ms=lookup_widget(GTK_WIDGET(button),"ms");
+GtkWidget *an=lookup_widget(GTK_WIDGET(button),"an");
+GtkWidget *marque=lookup_widget(GTK_WIDGET(button),"marque");
+GtkWidget *modele=lookup_widget(GTK_WIDGET(button),"modele");
+GtkWidget *couleur=lookup_widget(GTK_WIDGET(button),"couleur");
+input1=lookup_widget(GTK_WIDGET(button),"nbj");
+strcpy(r.nbj,gtk_entry_get_text(GTK_ENTRY(input1)));
+strcpy(r.marque,gtk_combo_box_get_active_text(GTK_COMBO_BOX(marque)));
+strcpy(r.modele,gtk_combo_box_get_active_text(GTK_COMBO_BOX(modele)));
+strcpy(r.couleur,gtk_combo_box_get_active_text(GTK_COMBO_BOX(couleur)));
 
-
-strcpy(x.nom,gtk_entry_get_text(GTK_ENTRY(nom)));
-strcpy(x.prenom,gtk_entry_get_text(GTK_ENTRY(prenom)));
-
-strcpy(x.cin,gtk_entry_get_text(GTK_ENTRY(cin)));
-strcpy(x.mail,gtk_entry_get_text(GTK_ENTRY(mail)));
-strcpy(x.tel,gtk_entry_get_text(GTK_ENTRY(tel)));
-
-strcpy(x.sexe,gtk_combo_box_get_active_text(GTK_COMBO_BOX(sexe)));
-x.date_naissance.jour= (int)gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(jrn));
-x.date_naissance.mois= (int)gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(msn));
-x.date_naissance.annee= (int)gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(ann));
-x.date_recrutement.jour= (int)gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(jrr));
-x.date_recrutement.mois= (int)gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(msr));
-x.date_recrutement.annee= (int)gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(anr));
-strcpy(x.mdp,gtk_entry_get_text(GTK_ENTRY(mdp)));
-
-strcpy(x.tache,gtk_combo_box_get_active_text(GTK_COMBO_BOX(tache)));
-Ajouter_agent(&x);
-
-
+r.dt.jour=(int)gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(jr));
+r.dt.mois=(int)gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(ms));
+r.dt.annee=(int)gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(an));
+ajouter_resvoit(&r);
 }
-
-
-void
-on_quitter_clicked                     (GtkButton       *button,
-                                        gpointer         user_data)
-{
-gtk_main_quit() ; 
-}
-
 
 void
 on_afficher_clicked                    (GtkButton       *button,
                                         gpointer         user_data)
-{agent x;
-GtkWidget *window1;
-GtkWidget *afficher_agent;
-GtkWidget *treeviewagent;
-  window1=lookup_widget(GTK_WIDGET(button),("window1"));
-  gtk_widget_destroy(window1);
-  afficher_agent=lookup_widget(GTK_WIDGET(button),("afficher_agent"));
-  afficher_agent=create_afficher_agent();
-  gtk_widget_show(afficher_agent);
-treeviewagent=lookup_widget(afficher_agent,"treeviewagent");
-Afficher_agent(treeviewagent,x);
+{
+GtkWidget *Ajouter_voiture;
+GtkWidget *Fenetre;
+GtkWidget *treeview1;
+g_print("\npointeur sayé");
+Ajouter_voiture=lookup_widget(GTK_WIDGET(button),"Ajouter_voiture");
 
-
+Fenetre=lookup_widget(GTK_WIDGET(button),"Fenetre");
+Fenetre=create_Fenetre();
+gtk_widget_show(Fenetre);
+g_print("\nAffichage sayé");
+treeview1=lookup_widget(Fenetre,"treeview1");
+g_print("\nEntring Affichier\n");
+gtk_widget_destroy(Ajouter_voiture);
+Afficher(treeview1,z);
 }
 
 
 void
-on_retour_clicked                      (GtkButton       *button,
+on_quitter_clicked              (GtkButton       *button,
                                         gpointer         user_data)
 {
-GtkWidget *window1, *afficher_agent;
-gtk_widget_destroy(window1);
-window1=create_window1();
-gtk_widget_show(window1);
+gtk_main_quit();
+}
+
+
+
+
+
+void
+on_Ok_clicked                          (GtkButton  *button,gpointer   user_data)
+{
+ajout T;
+GtkWidget *marque,*modele,*couleur,*prix;
+GtkWidget *Ajouter_voiture;
+
+//GtkWidget *jor,*mos,*An;
+//jor=lookup_widget(GTK_WIDGET(button),"spinbutton1");
+//mos=lookup_widget(GTK_WIDGET(button),"spinbutton2");
+//An=lookup_widget(GTK_WIDGET(button),"spinbutton3");
+Ajouter_voiture=lookup_widget(GTK_WIDGET(button),"Ajouter_voiture");
+//Ajouter_voiture=create_Ajouter_voiture();
+//gtk_widget_show(Ajouter_voiture);
+marque=lookup_widget(GTK_WIDGET(button),"marque");
+modele=lookup_widget(GTK_WIDGET(button),"modele");
+couleur=lookup_widget(GTK_WIDGET(button),"couleur");
+prix=lookup_widget(GTK_WIDGET(button),"prix");
+strcpy(T.Marque,gtk_entry_get_text(GTK_ENTRY(marque)));
+strcpy(T.Modele,gtk_entry_get_text(GTK_ENTRY(modele)));
+strcpy(T.Couleur,gtk_entry_get_text(GTK_ENTRY(couleur)));
+strcpy(T.Prix,gtk_entry_get_text(GTK_ENTRY(prix)));
+//T.jr.jour=gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(jor));
+//T.jr.mois=gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(mos));
+//T.jr.annee=gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(An));
+if((strcmp((gtk_entry_get_text(GTK_ENTRY(marque))),"")==0)||(strcmp((gtk_entry_get_text(GTK_ENTRY(modele))),"")==0)||(strcmp((gtk_entry_get_text(GTK_ENTRY(couleur))),"")==0)||(strcmp((gtk_entry_get_text(GTK_ENTRY(prix))),"")==0))
+{
+g_print("non");
+GtkWidget *dialog2;
+dialog2=create_dialog2() ;
+gtk_widget_show(dialog2) ;
+}
+else{
+strcpy(z.Marque,gtk_entry_get_text(GTK_ENTRY(marque)));
+strcpy(z.Modele,gtk_entry_get_text(GTK_ENTRY(modele)));
+
+strcpy(z.Couleur,gtk_entry_get_text(GTK_ENTRY(couleur)));
+strcpy(z.Prix,gtk_entry_get_text(GTK_ENTRY(prix)));
+
+
+GtkWidget *dialog1;
+dialog1=create_dialog1() ;
+gtk_widget_show(dialog1) ;
+}
+Ajouter_voit(&T);
+
 }
 
 
 void
-on_treeviewagent_row_activated         (GtkTreeView     *treeview,
+on_Retour_clicked                      (GtkButton      *button,
+                                        gpointer         user_data)
+{GtkWidget *Ajouter_voiture, *Fenetre;
+Fenetre=lookup_widget(GTK_WIDGET(button),"Fenetre");
+gtk_widget_destroy(Fenetre);
+Ajouter_voiture=create_Ajouter_voiture();
+gtk_widget_show(Ajouter_voiture);
+}
+
+
+void
+on_button_modifier_clicked             (GtkButton       *button,
+                                        gpointer         user_data)
+{
+//GtkWidget *label=lookup_widget(GTK_WIDGET(button),"label16");
+//gtk_label_set_text(GTK_LABEL(label),v.test);
+dell_user((char *)z.Marque);
+/*****Na3mlo Actualiser lil liste **************/
+GtkWidget *Fenetre=lookup_widget(GTK_WIDGET(button),"Fenetre");
+
+GtkWidget *Ajouter_voiture;
+Ajouter_voiture=lookup_widget(GTK_WIDGET(button),("Ajouter_voiture"));
+
+gtk_widget_destroy(Fenetre);
+Ajouter_voiture=create_Ajouter_voiture();
+gtk_widget_show(Ajouter_voiture);
+GtkWidget *marque=lookup_widget(Ajouter_voiture,"marque");
+GtkWidget *modele=lookup_widget(Ajouter_voiture,"modele");
+GtkWidget *couleur=lookup_widget(Ajouter_voiture,"couleur");
+GtkWidget *prix=lookup_widget(Ajouter_voiture,"prix");
+
+gtk_entry_set_text(GTK_LABEL(marque),z.Marque);
+gtk_entry_set_text(GTK_LABEL(modele),z.Modele);
+gtk_entry_set_text(GTK_LABEL(couleur),z.Couleur);
+gtk_entry_set_text(GTK_LABEL(prix),z.Prix);
+}
+
+
+void
+on_button_supprimer_clicked            (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+//GtkWidget *label=lookup_widget(GTK_WIDGET(button),"label16");
+//gtk_label_set_text(GTK_LABEL(label),v.test);
+dell_user((char *)z.Marque);
+/*****Na3mlo Actualiser lil liste **************/
+GtkWidget *Fenetre=lookup_widget(GTK_WIDGET(button),"Fenetre");
+GtkWidget *treeview1;
+
+treeview1=lookup_widget(GTK_WIDGET(Fenetre),"treeview1");
+
+Afficher(treeview1,z);
+gtk_widget_show(treeview1);
+}
+
+
+
+
+void
+on_treeview1_row_activated             (GtkTreeView     *treeview,
                                         GtkTreePath     *path,
                                         GtkTreeViewColumn *column,
                                         gpointer         user_data)
-{gchar *str_data;
+{
+gchar *str_data;
 GtkListStore *list_store;
 list_store=gtk_tree_view_get_model(treeview);
 GtkTreeIter   iter;
@@ -106,24 +189,26 @@ GtkTreeIter   iter;
   {
   gtk_tree_model_get(GTK_TREE_MODEL(list_store),&iter, 0, &str_data, -1);
   }
-strcpy(x.nom,str_data);
-
+strcpy(z.Marque,str_data);
 }
 
 
 void
-on_supprimer_clicked                   (GtkButton       *button,
+on_closebutton1_clicked                (GtkButton       *button,
                                         gpointer         user_data)
 {
-//GtkWidget *label=lookup_widget(GTK_WIDGET(button),"label16");
-//gtk_label_set_text(GTK_LABEL(label),v.test);
-dell_user((char *)x.nom);
-/*****Na3mlo Actualiser lil liste **************/
-GtkWidget *afficher_agent=lookup_widget(GTK_WIDGET(button),"afficher_agent");
-GtkWidget *treeviewagent;
+GtkWidget *dialog1=lookup_widget(GTK_WIDGET(button),("dialog1"));
 
-treeviewagent=lookup_widget(afficher_agent,"treeviewagent");
-Afficher_agent(treeviewagent,x);
-gtk_widget_show(treeviewagent);
+gtk_widget_destroy(dialog1);
+}
+
+
+void
+on_closebutton2_clicked                (GtkButton       *button,
+                                        gpointer         user_data)
+{
+GtkWidget *dialog2=lookup_widget(GTK_WIDGET(button),("dialog2"));
+
+gtk_widget_destroy(dialog2);
 }
 
